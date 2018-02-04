@@ -48,9 +48,9 @@ import { Asset, Participant, Transaction, Event } from './org.hyperledger.compos
   }
 
   export enum OwnerEntity {
-    Resident,
+    Freelancer,
     Bank,
-    UtilityCompany
+    Client
   }
 
   export class ServiceToCoins extends Transaction {
