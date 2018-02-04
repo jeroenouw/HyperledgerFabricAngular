@@ -1,3 +1,39 @@
 /**
  * Queries for decentralized-finance-network
 */
+
+query selectFreelancers {
+  description: "Select all freelancers (participants)"
+  statement:
+      SELECT org.decentralized.finance.network.Freelancer
+}
+
+query selectBanks {
+  description: "Select all banks (participants)"
+  statement:
+      SELECT org.decentralized.finance.network.Bank
+}
+
+query selectClients {
+  description: "Select all clients (participants)"
+  statement:
+      SELECT org.decentralized.finance.network.Client
+}
+
+query selectCoins {
+  description: "Select all coins (assets)"
+  statement:
+      SELECT org.decentralized.finance.network.Coins
+}
+
+query selectService {
+  description: "Select all services (assets)"
+  statement:
+      SELECT org.decentralized.finance.network.Service
+}
+
+query selectCash {
+  description: "Select all cashs (assets)"
+  statement:
+      SELECT org.decentralized.finance.network.Cash
+}
