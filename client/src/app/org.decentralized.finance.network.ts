@@ -32,6 +32,7 @@ import { Asset, Participant, Transaction, Event } from './org.hyperledger.compos
     cash: Cash;
     service: Service;
   }
+
   export class Bank extends Participant {
     bankID: string;
     name: string;
