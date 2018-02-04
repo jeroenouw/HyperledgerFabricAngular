@@ -1,3 +1,183 @@
 /**
  * Access control rules for decentralized-finance-network
 */
+
+// Freelancers to have access only to their own account
+rule FreelancerAccessOwnRecord {
+  description: "Allow freelancers to access only their profile"
+  participant(p): "org.decentralized.finance.network.Freelancer"
+  operation: READ, UPDATE, DELETE
+  resource(r): "org.decentralized.finance.network.Freelancer"
+  condition: (r.getIdentifier() === p.getIdentifier())
+  action: ALLOW
+}
+
+// Freelancers to have read only access to other freelancers
+rule FreelancerReadAccessFreelancers {
+  description: "Allow freelancers read access to other freelancers"
+  participant: "org.decentralized.finance.network.Freelancer"
+  operation: READ
+  resource: "org.decentralized.finance.network.Freelancer"
+  action: ALLOW
+}
+
+// Freelancers to have read only access to other banks
+rule FreelancerReadAccessBanks {
+  description: "Allow freelancers read access to other banks"
+  participant: "org.decentralized.finance.network.Freelancer"
+  operation: READ
+  resource: "org.decentralized.finance.network.Bank"
+  action: ALLOW
+}
+
+// Freelancers to have read only access to other clients
+rule FreelancerReadAccessClients {
+  description: "Allow freelancers read access to other clients"
+  participant: "org.decentralized.finance.network.Freelancer"
+  operation: READ
+  resource: "org.decentralized.finance.network.Client"
+  action: ALLOW
+}
+
+// Freelancers to have read access to all coins assets
+rule FreelancerAccessCoinsRecord {
+  description: "Allow freelancers read access to all coins assets"
+  participant: "org.decentralized.finance.network.Freelancer"
+  operation: READ
+  resource: "org.decentralized.finance.network.Coins"
+  action: ALLOW
+}
+
+// Freelancers to have read access to all service assets
+rule FreelancerAccessServiceRecord {
+  description: "Allow freelancers read access to all service assets"
+  participant: "org.decentralized.finance.network.Freelancer"
+  operation: READ
+  resource: "org.decentralized.finance.network.Service"
+  action: ALLOW
+}
+
+// Freelancers to have read access to all cash assets
+rule FreelanceAccessCashRecord {
+  description: "Allow freelancers read access to all cash assets"
+  participant: "org.decentralized.finance.network.Freelancer"
+  operation: READ
+  resource: "org.decentralized.finance.network.Cash"
+  action: ALLOW
+}
+
+// Banks to have access to their own account
+rule BankAccessOwnRecord {
+  description: "Allow banks to access only their profile"
+  participant(p): "org.decentralized.finance.network.Bank"
+  operation: READ, UPDATE, DELETE
+  resource(r): "org.decentralized.finance.network.Bank"
+  condition: (r.getIdentifier() === p.getIdentifier())
+  action: ALLOW
+}
+
+// Banks to have read only access to other banks
+rule BankReadAccessBanks {
+  description: "Allow banks read access to other Banks"
+  participant: "org.decentralized.finance.network.Bank"
+  operation: READ
+  resource: "org.decentralized.finance.network.Bank"
+  action: ALLOW
+}
+
+// Banks to have read only access to other freelancers
+rule BankReadAccessFreelancers {
+  description: "Allow banks read access to other freelancers"
+  participant: "org.decentralized.finance.network.Bank"
+  operation: READ
+  resource: "org.decentralized.finance.network.Freelancer"
+  action: ALLOW
+}
+
+// Banks to have read access to all coins assets
+rule BankAccessCoinsRecord {
+  description: "Allow banks read access to all coins assets"
+  participant: "org.decentralized.finance.network.Bank"
+  operation: READ
+  resource: "org.decentralized.finance.network.Coins"
+  action: ALLOW
+}
+
+// Banks to have read/update access to all cash assets
+rule BankAccessCashRecord {
+  description: "Allow banks read access to all cash assets"
+  participant: "org.decentralized.finance.network.Bank"
+  operation: READ
+  resource: "org.decentralized.finance.network.Cash"
+  action: ALLOW
+}
+
+// Clients to have access to their own account
+rule ClientAccessOwnRecord {
+  description: "Allow clients to access only their profile"
+  participant(p): "org.decentralized.finance.network.Client"
+  operation: READ, UPDATE, DELETE
+  resource(r): "org.decentralized.finance.network.Client"
+  condition: (r.getIdentifier() === p.getIdentifier())
+  action: ALLOW
+}
+
+// Clients to have read only access to other clients
+rule ClientReadAccessClients {
+  description: "Allow clients read access to other clients"
+  participant: "org.decentralized.finance.network.Client"
+  operation: READ
+  resource: "org.decentralized.finance.network.Client"
+  action: ALLOW
+}
+
+// Clients to have read only access to other freelancers
+rule ClientReadAccessFreelancers {
+  description: "Allow clients read access to other freelancers"
+  participant: "org.decentralized.finance.network.Client"
+  operation: READ
+  resource: "org.decentralized.finance.network.Freelancer"
+  action: ALLOW
+}
+
+// Clients to have read access to all coins assets
+rule ClientAccessCoinsRecord {
+  description: "Allow clients read access to all coins assets"
+  participant: "org.decentralized.finance.network.Client"
+  operation: READ
+  resource: "org.decentralized.finance.network.Coins"
+  action: ALLOW
+}
+
+// Clients to have read/update access to all service assets
+rule ClientAccessServiceRecord {
+  description: "Allow clients read access to all service assets"
+  participant: "org.decentralized.finance.network.Client"
+  operation: READ
+  resource: "org.decentralized.finance.network.Service"
+  action: ALLOW
+}
+
+rule SystemACL {
+  description:  "System ACL to permit all access"
+  participant: "org.hyperledger.composer.system.Participant"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}
+
+rule NetworkAdminUser {
+  description: "Grant business network administrators full access to user resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "**"
+  action: ALLOW
+}
+
+rule NetworkAdminSystem {
+  description: "Grant business network administrators full access to system resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}

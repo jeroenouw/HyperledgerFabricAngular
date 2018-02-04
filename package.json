@@ -51,7 +51,7 @@
         "**/*.js",
         "!./coverage/**/*",
         "!./node_modules/**/*",
-        "!./angular-app/**/*",
+        "!./client/**/*",
         "!./out/**/*",
         "!./scripts/**/*"
       ],
