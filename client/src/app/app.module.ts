@@ -9,10 +9,11 @@ import { AssetsModule } from './asset/assets.module';
 import { TransactionsModule } from './transactions/transactions.module';
 import { SharedModule } from './shared/shared.module';
 
-import { Configuration } from './configuration';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+
+import { Configuration } from './configuration';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HomeComponent } from './home/home.component';
     SharedModule
   ],
   providers: [
-    Configuration
+    Configuration,
+    DataService
   ],
   bootstrap: [AppComponent]
 })
