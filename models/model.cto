@@ -1,3 +1,4 @@
 /**
  * Decentralized finance network
 */
+namespace org.decentralized.finance.network
