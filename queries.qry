@@ -33,7 +33,7 @@ query selectService {
 }
 
 query selectCash {
-  description: "Select all cashs (assets)"
+  description: "Select all cash (assets)"
   statement:
       SELECT org.decentralized.finance.network.Cash
 }
