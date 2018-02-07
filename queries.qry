@@ -26,7 +26,7 @@ query selectCoins {
       SELECT org.decentralized.finance.network.Coins
 }
 
-query selectService {
+query selectServices {
   description: "Select all services (assets)"
   statement:
       SELECT org.decentralized.finance.network.Service

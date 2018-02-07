@@ -18,30 +18,30 @@ import { TransactionFcComponent } from './transactions/transaction-fc/transactio
 
 const ROUTES: Routes = [
   // Home
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch : 'full' },
 
   // Asset
-  { path: 'Coins', component: CoinsComponent },
-  { path: 'Service', component: ServiceComponent },
-  { path: 'Cash', component: CashComponent },
+  { path: 'coins', component: CoinsComponent },
+  { path: 'service', component: ServiceComponent },
+  { path: 'cash', component: CashComponent },
 
   // Participant
-  { path: 'Freelance', component: FreelancerComponent },
-  { path: 'Bank', component: BankComponent },
-  { path: 'Client', component: ClientComponent },
+  { path: 'freelance', component: FreelancerComponent },
+  { path: 'bank', component: BankComponent },
+  { path: 'client', component: ClientComponent },
 
   // Transaction
-  { path: 'Transaction/fb', component: TransactionFbComponent },
-  { path: 'Transaction/fc', component: TransactionFcComponent },
-  { path: 'Transaction/ff', component: TransactionFfComponent },
-  { path: 'AllTransactions', component: AllTransactionsComponent },
+  { path: 'transaction/fb', component: TransactionFbComponent },
+  { path: 'transaction/fc', component: TransactionFcComponent },
+  { path: 'transaction/ff', component: TransactionFfComponent },
+  { path: 'allTransactions', component: AllTransactionsComponent },
 
   // Other
   { path: '**', redirectTo: ''}
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(ROUTES)],
+  imports: [RouterModule.forRoot(ROUTES)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

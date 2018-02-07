@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
+import { MatButtonModule, MatCheckboxModule, MatMenuModule,
+         MatInputModule, MatSnackBarModule, MatToolbarModule,
+         MatCardModule, MatIconModule } from '@angular/Material';
 
 import { ParticipantsModule } from './participants/participants.module';
 import { AssetsModule } from './asset/assets.module';
@@ -26,6 +29,9 @@ import { DataService } from './data.service';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    MatButtonModule, MatCheckboxModule, MatMenuModule,
+    MatInputModule, MatSnackBarModule, MatToolbarModule,
+    MatCardModule, MatIconModule,
     ParticipantsModule,
     AssetsModule,
     TransactionsModule,
