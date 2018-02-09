@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { CashService } from './cash.service';
 import { toPromise } from 'rxjs/operator/toPromise';
 
@@ -8,18 +9,23 @@ import { toPromise } from 'rxjs/operator/toPromise';
   templateUrl: './cash.component.html',
   styleUrls: ['./cash.component.scss']
 })
-export class CashComponent implements OnInit {
+export class CashComponent implements OnInit, AfterViewInit {
   myForm: FormGroup;
   private allAssets;
   private asset;
   private currentId;
   private errorMessage;
 
+  displayedColumns = ['cashID', 'ownerID', 'ownerEntity', 'currency', 'value'];
+  dataSource = new MatTableDataSource();
+
   cashID = new FormControl('', Validators.required);
   currency = new FormControl('', Validators.required);
   value = new FormControl('', Validators.required);
   ownerID = new FormControl('', Validators.required);
   ownerEntity = new FormControl('', Validators.required);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private _cashService: CashService, private _fb: FormBuilder) {
     this.myForm = _fb.group({
@@ -33,6 +39,10 @@ export class CashComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAll();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   loadAll(): Promise<any> {

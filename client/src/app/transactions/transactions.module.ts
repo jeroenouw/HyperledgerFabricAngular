@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule, MatInputModule, MatCardModule, MatPaginatorModule,
+         MatIconModule, MatTableModule, MatCheckboxModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AllTransactionsComponent } from './all-transactions/all-transactions.component';
 import { TransactionFbComponent } from './transaction-fb/transaction-fb.component';
@@ -13,7 +16,10 @@ import { TransactionFfService } from './transaction-ff/transaction-ff.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule, MatInputModule, MatCardModule, MatPaginatorModule,
+    MatIconModule, MatTableModule, MatCheckboxModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AllTransactionsComponent,

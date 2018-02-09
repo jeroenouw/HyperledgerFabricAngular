@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule, MatInputModule, MatCardModule, MatPaginatorModule,
+         MatIconModule, MatTableModule, MatCheckboxModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CoinsComponent } from './coins/coins.component';
 import { CashComponent } from './cash/cash.component';
@@ -11,7 +14,10 @@ import { ServiceService} from './service/service.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule, MatInputModule, MatCardModule, MatPaginatorModule,
+    MatIconModule, MatTableModule, MatCheckboxModule,
+    ReactiveFormsModule
   ],
   declarations: [
     CoinsComponent,

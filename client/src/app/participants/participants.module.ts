@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule, MatInputModule, MatCardModule, MatPaginatorModule,
+         MatIconModule, MatTableModule, MatCheckboxModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { FreelancerComponent } from './freelancer/freelancer.component';
 import { ClientComponent } from './client/client.component';
@@ -11,7 +14,10 @@ import { BankService } from './bank/bank.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule, MatInputModule, MatCardModule, MatPaginatorModule,
+    MatIconModule, MatTableModule, MatCheckboxModule,
+    ReactiveFormsModule
   ],
   declarations: [
     FreelancerComponent,
