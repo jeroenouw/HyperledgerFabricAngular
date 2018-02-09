@@ -4,3 +4,14 @@ mat-card {
   width: 700px;
   margin: 30px auto 0;
 }
+
+.header-title, .header-title:hover {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.header-buttons {
+  position: absolute;
+  margin-right: 10px;
+  right: 0;
+}

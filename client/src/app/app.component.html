@@ -1,4 +1,67 @@
-<mat-toolbar color="primary">Hyperledger</mat-toolbar>
+<mat-toolbar color="primary">
+  <a class="header-title" [routerLink]="['/']">Hyperledger Fabric Angular</a>
+
+  <div class="header-buttons">
+    <a mat-icon-button [matMenuTriggerFor]="menuAsset">
+      <mat-icon class="icon">attach_money</mat-icon>
+    </a>
+    <mat-menu #menuAsset="matMenu">
+      <a mat-menu-item [routerLink]="['/assets/cash']">
+        <mat-icon class="icon">attach_money</mat-icon>
+        Cash
+      </a>
+      <a mat-menu-item [routerLink]="['/assets/coins']">
+        <mat-icon class="icon">attach_money</mat-icon>
+        Coins
+      </a>
+      <a mat-menu-item [routerLink]="['/assets/service']">
+        <mat-icon class="icon">attach_money</mat-icon>
+        Service
+      </a>
+    </mat-menu>
+
+    <a mat-icon-button [matMenuTriggerFor]="menuParticipants">
+        <mat-icon class="icon">supervisor_account</mat-icon>
+      </a>
+      <mat-menu #menuParticipants="matMenu">
+        <a mat-menu-item [routerLink]="['/participants/bank']">
+          <mat-icon class="icon">account_circle</mat-icon>
+          Bank
+        </a>
+        <a mat-menu-item [routerLink]="['/participants/freelancer']">
+          <mat-icon class="icon">account_circle</mat-icon>
+          Freelancer
+        </a>
+        <a mat-menu-item [routerLink]="['/participants/client']">
+          <mat-icon class="icon">account_circle</mat-icon>
+          Client
+        </a>
+      </mat-menu>
+
+    <a mat-icon-button [matMenuTriggerFor]="menuTransactions">
+      <mat-icon class="icon">swap_horiz</mat-icon>
+    </a>
+    <mat-menu #menuTransactions="matMenu">
+      <a mat-menu-item [routerLink]="['/transaction/fb']">
+        <mat-icon class="icon">swap_horiz</mat-icon>
+        Freelancer to Bank
+      </a>
+      <a mat-menu-item [routerLink]="['/transaction/fc']">
+        <mat-icon class="icon">swap_horiz</mat-icon>
+        Freelancer to Client
+      </a>
+      <a mat-menu-item [routerLink]="['/transaction/ff']">
+        <mat-icon class="icon">swap_horiz</mat-icon>
+        Freelancer to Freelancer
+      </a>
+      <a mat-menu-item [routerLink]="['/transactions/all']">
+        <mat-icon class="icon">swap_horiz</mat-icon>
+        All transactions
+      </a>
+    </mat-menu>
+  </div>
+
+</mat-toolbar>
 <mat-card>
   <router-outlet></router-outlet>
 </mat-card>

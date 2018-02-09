@@ -14,6 +14,26 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "@asset/*": ["app/asset/*"],
+      "@shared/*": ["app/shared/*"],
+      "@participants/*": ["app/participants/*"],
+      "@transactions/*": ["app/transactions/*"],
+      "@dataservice": ["app/data.service"],
+      "@configuration": ["app/configuration"],
+      "@network": ["app/org.decentralized.finance.network"],
+      "@environments": ["environments/*"]
+    },
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "preserveWhiteSpaces": false,
+    "skipMetadataEmit": false,
+    "strictMetadataEmit": true,
+    "strictInjectionParameters": true,
+    "annotateForClosureCompiler": false,
+    "enableLegacyTemplate": false
   }
 }
