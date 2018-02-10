@@ -48,7 +48,7 @@ export class CoinsComponent implements OnInit, AfterViewInit {
     return this._coinsService.getAll()
     .toPromise()
     .then((result) => {
-      this._errorMessage = null;
+      this.dataSource.data = result;
       result.forEach(_asset => {
         tempList.push(_asset);
       });
