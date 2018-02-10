@@ -13,5 +13,5 @@
 [Apache 2.0](LICENSE)
 
 ## Credits
-[Hyperledger Fabric](https://hyperledger.org/projects/fabric)
+[Hyperledger Fabric](https://hyperledger.org/projects/fabric)  
 [Energy Composer](https://github.com/IBM/Decentralized-Energy-Composer)

@@ -13,6 +13,7 @@ export class DataService<Type> {
   private _options: any;
 
   constructor(private _http: HttpClient, private _configuration: Configuration) {
+    this._actionUrl = _configuration.ServerWithApiUrl;
     this._headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
     this._options = ({ _headers: this._headers });
   }

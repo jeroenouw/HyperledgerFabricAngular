@@ -40,7 +40,7 @@ export class AllTransactionsComponent implements OnInit {
     return this.serviceTransaction.getTransactions()
     .toPromise()
     .then((result) => {
-      result = this.sortByKey(result, 'transactionTimestamp');
+      this.dataSource.data = this.sortByKey(result, 'transactionTimestamp');
       this._errorMessage = null;
       result.forEach(transaction => {
         tempList.push(transaction);

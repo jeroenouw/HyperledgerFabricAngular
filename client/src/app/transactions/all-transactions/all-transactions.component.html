@@ -1,14 +1,14 @@
 <h3>The Blockchain</h3>
 
+<hr>
+
 <div *ngIf="_performedTransactions.length == 0 && _systemTransactions.length == 0">
   <h4>No transactions are made yet</h4>
 </div>
 
-<hr>
-
 <!-- <div *ngIf="_performedTransactions.length > 0"> -->
-<div>
-  <h4>Performed Transactions</h4>
+<!-- <div class="table">
+  <h4>Performed Transactions:</h4>
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="transactionType">
       <mat-header-cell *matHeaderCellDef> Transaction Type </mat-header-cell>
@@ -23,11 +23,11 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-</div>
+</div> -->
 
 <!-- <div *ngIf="_systemTransactions.length > 0" > -->
 <div>
-  <h4>System Transactions</h4>
+  <!-- <h4>System Transactions:</h4> -->
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="transactionType">
       <mat-header-cell *matHeaderCellDef> Transaction Type </mat-header-cell>
@@ -42,6 +42,4 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-
-  <p *ngFor="let transaction of _allTransactions"> {{ transaction.transactionId }} </p>
 </div>
