@@ -7,19 +7,19 @@ import { Configuration } from './configuration';
 
 @Injectable()
 export class DataService<Type> {
-  private resolveSuffix = '?resolve=true';
-  private actionUrl: string;
-  private headers: HttpHeaders;
-  private options: any;
+  private _resolveSuffix = '?resolve=true';
+  private _actionUrl: string;
+  private _headers: HttpHeaders;
+  private _options: any;
 
   constructor(private _http: HttpClient, private _configuration: Configuration) {
-    this.headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
-    this.options = ({ headers: this.headers });
+    this._headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
+    this._options = ({ _headers: this._headers });
   }
 
   public getAll(ns: string): Observable<Type[]> {
-    console.log('GetAll ' + ns + ' to ' + this.actionUrl + ns, this.options);
-    return this._http.get(`${this.actionUrl}${ns}`)
+    console.log('GetAll ' + ns + ' to ' + this._actionUrl + ns, this._options);
+    return this._http.get(`${this._actionUrl}${ns}`)
     .pipe(
       catchError(this.handleError)
     );
@@ -27,7 +27,7 @@ export class DataService<Type> {
 
   public getSingle(ns: string, id: string): Observable<Type> {
     console.log('GetSingle ' + ns);
-    return this._http.get(this.actionUrl + ns + '/' + id + this.resolveSuffix, this.options)
+    return this._http.get(this._actionUrl + ns + '/' + id + this._resolveSuffix, this._options)
     .pipe(
       catchError(this.handleError)
     );
@@ -37,7 +37,7 @@ export class DataService<Type> {
     console.log('Entered DataService add');
     console.log('Add ' + ns);
     console.log('asset', asset);
-    return this._http.post(this.actionUrl + ns, asset, this.options)
+    return this._http.post(this._actionUrl + ns, asset, this._options)
     .pipe(
       catchError(this.handleError)
     );
@@ -48,7 +48,7 @@ export class DataService<Type> {
     console.log('what is the id?', id);
     console.log('what is the updated item?', itemToUpdate);
     console.log('what is the updated item?', JSON.stringify(itemToUpdate));
-    return this._http.put(`${this.actionUrl}${ns}/${id}`, itemToUpdate, this.options)
+    return this._http.put(`${this._actionUrl}${ns}/${id}`, itemToUpdate, this._options)
     .pipe(
       catchError(this.handleError)
     );
@@ -56,7 +56,7 @@ export class DataService<Type> {
 
   public delete(ns: string, id: string): Observable<Type> {
     console.log('Delete ' + ns);
-    return this._http.delete(this.actionUrl + ns + '/' + id, this.options)
+    return this._http.delete(this._actionUrl + ns + '/' + id, this._options)
     .pipe(
       catchError(this.handleError)
     );
@@ -64,7 +64,7 @@ export class DataService<Type> {
 
   public transactions(): Observable<Type[]> {
     console.log('Get transactions ');
-    return this._http.get(this.actionUrl + 'system/historian', this.options)
+    return this._http.get(this._actionUrl + 'system/historian', this._options)
     .pipe(
       catchError(this.handleError)
     );

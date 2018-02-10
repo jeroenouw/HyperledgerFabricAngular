@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatInputModule, MatCardModule, MatPaginatorModule,
-         MatIconModule, MatTableModule, MatCheckboxModule } from '@angular/material';
+         MatIconModule, MatTableModule, MatCheckboxModule, MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { FreelancerComponent } from './freelancer/freelancer.component';
@@ -16,7 +16,7 @@ import { BankService } from './bank/bank.service';
   imports: [
     CommonModule,
     MatButtonModule, MatInputModule, MatCardModule, MatPaginatorModule,
-    MatIconModule, MatTableModule, MatCheckboxModule,
+    MatIconModule, MatTableModule, MatCheckboxModule, MatSelectModule,
     ReactiveFormsModule
   ],
   declarations: [

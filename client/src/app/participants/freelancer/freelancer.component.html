@@ -1,3 +1,94 @@
-<p>
-  freelancer works!
-</p>
+<h3>Freelancer</h3>
+
+<form [formGroup]="myForm">
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="freelancerID" placeholder="FreelancerID" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="firstName" placeholder="Firstname" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="lastName" placeholder="Lastname" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="coinsValue" placeholder="CoinsValue" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="serviceValue" placeholder="ServiceValue" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="serviceHours" placeholder="ServiceHours" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="cashValue" placeholder="CashValue" class="form-control">
+  </mat-input-container>
+
+  <mat-form-field>
+    <mat-select formControlName="cashCurrency" placeholder="CashCurrency" [(value)]="cashCurrency">
+      <mat-option value="EUR">EUR</mat-option>
+      <mat-option value="USD">USD</mat-option>
+      <mat-option value="GBP">GBP</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="submit" (click)="addFreelancer(myForm);">Add</button>
+  </mat-card-actions>
+
+</form>
+
+<mat-table #table [dataSource]="dataSource">
+  <ng-container matColumnDef="freelancerID">
+    <mat-header-cell *matHeaderCellDef> Freelancer ID</mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.freelancerID }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef> Firstname </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.firstName }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef> Lastname </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.lastName }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="coinsValue">
+    <mat-header-cell *matHeaderCellDef> Coins Value </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.coinsValue }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="serviceValue">
+    <mat-header-cell *matHeaderCellDef> Service Value </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.serviceValue }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="serviceHours">
+    <mat-header-cell *matHeaderCellDef> Service Hours </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.serviceHours }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cashValue">
+    <mat-header-cell *matHeaderCellDef> Cash value </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.cashValue }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cashCurrency">
+    <mat-header-cell *matHeaderCellDef> Cash Currency </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.cashCurrency }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator
+[pageSize]="15">
+</mat-paginator>

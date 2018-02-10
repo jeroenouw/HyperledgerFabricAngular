@@ -11,10 +11,10 @@ import { toPromise } from 'rxjs/operator/toPromise';
 })
 export class CashComponent implements OnInit, AfterViewInit {
   myForm: FormGroup;
-  private allAssets;
-  private asset;
-  private currentId;
-  private errorMessage;
+  private _allAssets;
+  private _asset;
+  private _currentId;
+  private _errorMessage;
 
   displayedColumns = ['cashID', 'ownerID', 'ownerEntity', 'currency', 'value'];
   dataSource = new MatTableDataSource();
@@ -41,7 +41,7 @@ export class CashComponent implements OnInit, AfterViewInit {
     this.loadAll();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
 
@@ -50,25 +50,25 @@ export class CashComponent implements OnInit, AfterViewInit {
     return this._cashService.getAll()
     .toPromise()
     .then((result) => {
-      this.errorMessage = null;
-      result.forEach(asset => {
-        tempList.push(asset);
+      this._errorMessage = null;
+      result.forEach(_asset => {
+        tempList.push(_asset);
       });
-      this.allAssets = tempList;
+      this._allAssets = tempList;
     })
     .catch((error) => {
       if (error === 'Server error') {
-          this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
+          this._errorMessage = 'Could not connect to REST server. Please check your configuration details';
       } else if (error === '404 - Not Found') {
-        this.errorMessage = '404 - Could not find API route. Please check your available APIs.';
+        this._errorMessage = '404 - Could not find API route. Please check your available APIs.';
       } else {
-        this.errorMessage = error;
+        this._errorMessage = error;
       }
     });
   }
 
   addAsset(form: any): Promise<any> {
-    this.asset = {
+    this._asset = {
       $class:
       'org.decentralized.finance.network.Cash',
       'cashID': this.cashID.value,
@@ -86,10 +86,10 @@ export class CashComponent implements OnInit, AfterViewInit {
       'ownerEntity': null
     });
 
-    return this._cashService.addAsset(this.asset)
+    return this._cashService.addAsset(this._asset)
     .toPromise()
     .then(() => {
-      this.errorMessage = null;
+      this._errorMessage = null;
       this.myForm.setValue({
         'cashID': null,
         'currency': null,
@@ -100,15 +100,15 @@ export class CashComponent implements OnInit, AfterViewInit {
     })
     .catch((error) => {
       if (error === 'Server error') {
-        this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
+        this._errorMessage = 'Could not connect to REST server. Please check your configuration details';
       } else {
-        this.errorMessage = error;
+        this._errorMessage = error;
       }
     });
   }
 
    updateAsset(form: any): Promise<any> {
-    this.asset = {
+    this._asset = {
       $class:
       'org.decentralized.finance.network.Cash',
       'cashID': this.cashID.value,
@@ -118,18 +118,18 @@ export class CashComponent implements OnInit, AfterViewInit {
       'ownerEntity': this.ownerEntity.value
     };
 
-    return this._cashService.updateAsset(form.get('cashID').value, this.asset)
+    return this._cashService.updateAsset(form.get('cashID').value, this._asset)
     .toPromise()
     .then(() => {
-      this.errorMessage = null;
+      this._errorMessage = null;
     })
     .catch((error) => {
       if (error === 'Server error') {
-        this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
+        this._errorMessage = 'Could not connect to REST server. Please check your configuration details';
       } else if (error === '404 - Not Found') {
-        this.errorMessage = '404 - Could not find API route. Please check your available APIs.';
+        this._errorMessage = '404 - Could not find API route. Please check your available APIs.';
       } else {
-        this.errorMessage = error;
+        this._errorMessage = error;
       }
     });
   }
@@ -137,31 +137,31 @@ export class CashComponent implements OnInit, AfterViewInit {
 
   deleteAsset(): Promise<any> {
 
-    return this._cashService.deleteAsset(this.currentId)
+    return this._cashService.deleteAsset(this._currentId)
     .toPromise()
     .then(() => {
-      this.errorMessage = null;
+      this._errorMessage = null;
     })
     .catch((error) => {
       if (error === 'Server error') {
-        this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
+        this._errorMessage = 'Could not connect to REST server. Please check your configuration details';
       } else if (error === '404 - Not Found') {
-        this.errorMessage = '404 - Could not find API route. Please check your available APIs.';
+        this._errorMessage = '404 - Could not find API route. Please check your available APIs.';
       } else {
-        this.errorMessage = error;
+        this._errorMessage = error;
       }
     });
   }
 
   setId(id: any): void {
-    this.currentId = id;
+    this._currentId = id;
   }
 
   getForm(id: any): Promise<any> {
     return this._cashService.getAsset(id)
     .toPromise()
     .then((result) => {
-      this.errorMessage = null;
+      this._errorMessage = null;
       const formObject = {
         'cashID': null,
         'currency': null,
@@ -204,11 +204,11 @@ export class CashComponent implements OnInit, AfterViewInit {
     })
     .catch((error) => {
       if (error === 'Server error') {
-          this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
+          this._errorMessage = 'Could not connect to REST server. Please check your configuration details';
       } else if (error === '404 - Not Found') {
-        this.errorMessage = '404 - Could not find API route. Please check your available APIs.';
+        this._errorMessage = '404 - Could not find API route. Please check your available APIs.';
       } else {
-        this.errorMessage = error;
+        this._errorMessage = error;
       }
     });
   }
