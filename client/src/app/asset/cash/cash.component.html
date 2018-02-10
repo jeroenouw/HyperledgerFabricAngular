@@ -34,16 +34,6 @@
     <mat-cell *matCellDef="let asset"> {{ asset.cashID }} </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="ownerID">
-    <mat-header-cell *matHeaderCellDef> Owner ID </mat-header-cell>
-    <mat-cell *matCellDef="let asset"> {{ asset.ownerID }} </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="ownerEntity">
-    <mat-header-cell *matHeaderCellDef> Owner Entity </mat-header-cell>
-    <mat-cell *matCellDef="let asset"> {{ asset.ownerEntity }} </mat-cell>
-  </ng-container>
-
   <ng-container matColumnDef="currency">
     <mat-header-cell *matHeaderCellDef> Currency </mat-header-cell>
     <mat-cell *matCellDef="let asset"> {{ asset.currency }} </mat-cell>
@@ -52,6 +42,16 @@
   <ng-container matColumnDef="value">
     <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
     <mat-cell *matCellDef="let asset"> {{ asset.value }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="ownerID">
+    <mat-header-cell *matHeaderCellDef> Owner ID </mat-header-cell>
+    <mat-cell *matCellDef="let asset"> {{ asset.ownerID }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="ownerEntity">
+    <mat-header-cell *matHeaderCellDef> Owner Entity </mat-header-cell>
+    <mat-cell *matCellDef="let asset"> {{ asset.ownerEntity }} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

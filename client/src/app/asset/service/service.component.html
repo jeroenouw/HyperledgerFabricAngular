@@ -1,3 +1,63 @@
-<p>
-  service works!
-</p>
+<h3>Service</h3>
+
+<form [formGroup]="myForm">
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="serviceID" placeholder="ServiceID" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="hours" placeholder="Hours" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="value" placeholder="Value" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="ownerID" placeholder="OwnerID" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="ownerEntity" placeholder="OwnerEntity" class="form-control">
+  </mat-input-container>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="submit" (click)="addAsset(myForm);">Add</button>
+  </mat-card-actions>
+
+</form>
+
+<mat-table #table [dataSource]="dataSource">
+  <ng-container matColumnDef="serviceID">
+    <mat-header-cell *matHeaderCellDef> Service ID</mat-header-cell>
+    <mat-cell *matCellDef="let asset"> {{ asset.serviceID }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="hours">
+    <mat-header-cell *matHeaderCellDef> Hours </mat-header-cell>
+    <mat-cell *matCellDef="let asset"> {{ asset.hours}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="value">
+    <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+    <mat-cell *matCellDef="let asset"> {{ asset.value }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="ownerID">
+    <mat-header-cell *matHeaderCellDef> Owner ID </mat-header-cell>
+    <mat-cell *matCellDef="let asset"> {{ asset.ownerID }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="ownerEntity">
+    <mat-header-cell *matHeaderCellDef> Owner Entity </mat-header-cell>
+    <mat-cell *matCellDef="let asset"> {{ asset.ownerEntity }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator
+[pageSize]="15">
+</mat-paginator>

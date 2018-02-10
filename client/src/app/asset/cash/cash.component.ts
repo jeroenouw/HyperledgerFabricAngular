@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { CashService } from './cash.service';
@@ -16,7 +16,7 @@ export class CashComponent implements OnInit, AfterViewInit {
   private _currentId;
   private _errorMessage;
 
-  displayedColumns = ['cashID', 'ownerID', 'ownerEntity', 'currency', 'value'];
+  displayedColumns = ['cashID', 'currency', 'value', 'ownerID', 'ownerEntity'];
   dataSource = new MatTableDataSource();
 
   cashID = new FormControl('', Validators.required);
@@ -134,9 +134,7 @@ export class CashComponent implements OnInit, AfterViewInit {
     });
   }
 
-
   deleteAsset(): Promise<any> {
-
     return this._cashService.deleteAsset(this._currentId)
     .toPromise()
     .then(() => {
