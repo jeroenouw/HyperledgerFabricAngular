@@ -31,7 +31,7 @@
   </mat-input-container>
 
   <mat-form-field>
-    <mat-select formControlName="cashCurrency" placeholder="CashCurrency" [(value)]="cashCurrency">
+    <mat-select formControlName="cashCurrency" placeholder="Currency" [(value)]="cashCurrency">
       <mat-option value="EUR">EUR</mat-option>
       <mat-option value="USD">USD</mat-option>
       <mat-option value="GBP">GBP</mat-option>
@@ -61,7 +61,7 @@
   </ng-container>
 
   <ng-container matColumnDef="coinsValue">
-    <mat-header-cell *matHeaderCellDef> Coins Value </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> Coins Balance </mat-header-cell>
     <mat-cell *matCellDef="let participant"> {{ participant.coinsValue }} </mat-cell>
   </ng-container>
 
@@ -81,7 +81,7 @@
   </ng-container>
 
   <ng-container matColumnDef="cashCurrency">
-    <mat-header-cell *matHeaderCellDef> Cash Currency </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> Currency </mat-header-cell>
     <mat-cell *matCellDef="let participant"> {{ participant.cashCurrency }} </mat-cell>
   </ng-container>
 

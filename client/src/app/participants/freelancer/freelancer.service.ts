@@ -19,7 +19,7 @@ export class FreelancerService {
 
   // Freelancer
   public getAllFreelancers(): Observable<Freelancer[]> {
-      return this._freelancerService.getAll(this._freelancer);
+    return this._freelancerService.getAll(this._freelancer);
   }
 
   public getFreelancer(id: any): Observable<Freelancer> {
@@ -40,7 +40,7 @@ export class FreelancerService {
 
   // Coins
   public getAllCoins(): Observable<Coins[]> {
-      return this._coinsService.getAll(this._coins);
+    return this._coinsService.getAll(this._coins);
   }
 
   public getCoins(id: any): Observable<Coins> {
@@ -62,7 +62,7 @@ export class FreelancerService {
 
   // Service
   public getAllServices(): Observable<Service[]> {
-      return this._serviceService.getAll(this._service);
+    return this._serviceService.getAll(this._service);
   }
 
   public getService(id: any): Observable<Service> {

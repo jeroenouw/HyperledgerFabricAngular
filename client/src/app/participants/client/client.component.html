@@ -1,3 +1,63 @@
-<p>
-  client works!
-</p>
+<h3>Client</h3>
+
+<form [formGroup]="myForm">
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="clientID" placeholder="clientID" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="name" placeholder="Name" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="coinsValue" placeholder="CoinsValue" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="serviceValue" placeholder="ServiceValue" class="form-control">
+  </mat-input-container>
+
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="serviceHours" placeholder="ServiceHours" class="form-control">
+  </mat-input-container>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="submit" (click)="addClient(myForm);">Add</button>
+  </mat-card-actions>
+
+</form>
+
+<mat-table #table [dataSource]="dataSource">
+  <ng-container matColumnDef="clientID">
+    <mat-header-cell *matHeaderCellDef> Client ID</mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.clientID }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="coinsValue">
+    <mat-header-cell *matHeaderCellDef> Coins Balance </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.coinsValue }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="serviceValue">
+    <mat-header-cell *matHeaderCellDef> Service Value </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.serviceValue }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="serviceHours">
+    <mat-header-cell *matHeaderCellDef> Service Hours </mat-header-cell>
+    <mat-cell *matCellDef="let participant"> {{ participant.serviceHours }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator
+[pageSize]="15">
+</mat-paginator>
