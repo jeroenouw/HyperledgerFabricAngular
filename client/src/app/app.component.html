@@ -3,7 +3,7 @@
 
   <div class="header-buttons">
     <a mat-icon-button [matMenuTriggerFor]="menuAsset">
-      <mat-icon class="icon">attach_money</mat-icon>
+      <mat-icon matTooltip="Assets" class="icon">attach_money</mat-icon>
     </a>
     <mat-menu #menuAsset="matMenu">
       <a mat-menu-item [routerLink]="['/assets/cash']">
@@ -21,7 +21,7 @@
     </mat-menu>
 
     <a mat-icon-button [matMenuTriggerFor]="menuParticipants">
-        <mat-icon class="icon">supervisor_account</mat-icon>
+        <mat-icon matTooltip="Participants" class="icon">supervisor_account</mat-icon>
       </a>
       <mat-menu #menuParticipants="matMenu">
         <a mat-menu-item [routerLink]="['/participants/bank']">
@@ -39,7 +39,7 @@
       </mat-menu>
 
     <a mat-icon-button [matMenuTriggerFor]="menuTransactions">
-      <mat-icon class="icon">swap_horiz</mat-icon>
+      <mat-icon matTooltip="Transactions" class="icon">swap_horiz</mat-icon>
     </a>
     <mat-menu #menuTransactions="matMenu">
       <a mat-menu-item [routerLink]="['/transaction/fb']">

@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
 import { MatButtonModule, MatCheckboxModule, MatMenuModule,
          MatInputModule, MatSnackBarModule, MatToolbarModule,
-         MatCardModule, MatIconModule } from '@angular/Material';
+         MatCardModule, MatIconModule, MatTooltipModule } from '@angular/Material';
 
 import { ParticipantsModule } from './participants/participants.module';
 import { AssetsModule } from './asset/assets.module';
@@ -33,7 +33,7 @@ import { DataService } from './data.service';
     AppRoutingModule,
     MatButtonModule, MatCheckboxModule, MatMenuModule,
     MatInputModule, MatSnackBarModule, MatToolbarModule,
-    MatCardModule, MatIconModule,
+    MatCardModule, MatIconModule, MatTooltipModule,
     ParticipantsModule,
     AssetsModule,
     TransactionsModule,
