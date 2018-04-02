@@ -152,7 +152,7 @@ export class ClientComponent implements OnInit {
     return this._clientService.getAllClients()
     .toPromise()
     .then((result) => {
-      this._errormessage = null;
+      this.dataSource.data = result;
       result.forEach(_client => {
         tempList.push(_client);
       });
@@ -174,7 +174,7 @@ export class ClientComponent implements OnInit {
     return this._clientService.getAllClients()
     .toPromise()
     .then((result) => {
-      this._errormessage = null;
+      this.dataSource.data = result;
       result.forEach(_client => {
         clientList.push(_client);
       });

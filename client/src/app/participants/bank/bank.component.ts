@@ -152,7 +152,7 @@ export class BankComponent implements OnInit {
     return this._bankService.getAllBanks()
     .toPromise()
     .then((result) => {
-      this._errormessage = null;
+      this.dataSource.data = result;
       result.forEach(_bank => {
         tempList.push(_bank);
       });
@@ -174,7 +174,7 @@ export class BankComponent implements OnInit {
     return this._bankService.getAllBanks()
     .toPromise()
     .then((result) => {
-      this._errormessage = null;
+      this.dataSource.data = result;
       result.forEach(_bank => {
         bankList.push(_bank);
       });

@@ -50,7 +50,7 @@ export class CashComponent implements OnInit, AfterViewInit {
     return this._cashService.getAll()
     .toPromise()
     .then((result) => {
-      this._errorMessage = null;
+      this.dataSource.data = result;
       result.forEach(_asset => {
         tempList.push(_asset);
       });

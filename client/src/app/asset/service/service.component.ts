@@ -50,7 +50,7 @@ export class ServiceComponent implements OnInit, AfterViewInit {
     return this._serviceService.getAll()
     .toPromise()
     .then((result) => {
-      this._errorMessage = null;
+      this.dataSource.data = result;
       result.forEach(_asset => {
         tempList.push(_asset);
       });

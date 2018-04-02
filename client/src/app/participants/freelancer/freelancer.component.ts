@@ -178,7 +178,7 @@ export class FreelancerComponent implements OnInit {
     return this._freelancerService.getAllFreelancers()
     .toPromise()
     .then((result) => {
-      this._errormessage = null;
+      this.dataSource.data = result;
       result.forEach(_freelancer => {
         tempList.push(_freelancer);
       });
@@ -200,7 +200,7 @@ export class FreelancerComponent implements OnInit {
     return this._freelancerService.getAllFreelancers()
     .toPromise()
     .then((result) => {
-      this._errormessage = null;
+      this.dataSource.data = result;
       result.forEach(_freelancer => {
         freelancerList.push(_freelancer);
       });
@@ -232,7 +232,7 @@ export class FreelancerComponent implements OnInit {
             freelancer.serviceValue = result.value;
           }
           if (result.hours) {
-            freelancer.serviceUnits = result.hours;
+            freelancer.serviceHours = result.hours;
           }
         });
 
