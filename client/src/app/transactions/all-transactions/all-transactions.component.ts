@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { AllTransactionsService } from './all-transactions.service';
@@ -9,20 +9,26 @@ import { toPromise } from 'rxjs/operator/toPromise';
   templateUrl: './all-transactions.component.html',
   styleUrls: ['./all-transactions.component.scss']
 })
-export class AllTransactionsComponent implements OnInit {
+export class AllTransactionsComponent implements OnInit, AfterViewInit {
   private _errorMessage;
-  private _allTransactions;
-  private _systemTransactions = [];
-  private _performedTransactions = [];
+  public allTransactions;
+  public systemTransactions = [];
+  public performedTransactions = [];
 
   displayedColumns = ['transactionType', 'transactionId'];
   dataSource = new MatTableDataSource();
 
-  constructor(private serviceTransaction: AllTransactionsService, private _fb: FormBuilder) {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(private _serviceTransaction: AllTransactionsService, private _fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.loadAllTransactions();
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
   sortByKey(array, key): Object[] {
@@ -37,7 +43,7 @@ export class AllTransactionsComponent implements OnInit {
     const systemList = [];
     const performedList = [];
 
-    return this.serviceTransaction.getTransactions()
+    return this._serviceTransaction.getTransactions()
     .toPromise()
     .then((result) => {
       this.dataSource.data = this.sortByKey(result, 'transactionTimestamp');
@@ -55,12 +61,12 @@ export class AllTransactionsComponent implements OnInit {
         }
       });
 
-      this._systemTransactions = systemList;
-      this._performedTransactions = performedList;
-      this._allTransactions = tempList;
-      console.log(this._allTransactions);
-      console.log(this._performedTransactions);
-      console.log(this._systemTransactions);
+      this.systemTransactions = systemList;
+      this.performedTransactions = performedList;
+      this.allTransactions = tempList;
+      console.log(this.allTransactions);
+      console.log(this.performedTransactions);
+      console.log(this.systemTransactions);
     })
     .catch((error) => {
       if (error === 'Server error') {
