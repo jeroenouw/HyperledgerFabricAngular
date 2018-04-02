@@ -18,13 +18,9 @@
     <input matInput formControlName="cashValue" placeholder="CashValue" class="form-control">
   </mat-input-container>
 
-  <mat-form-field>
-    <mat-select formControlName="cashCurrency" placeholder="Currency" [(value)]="cashCurrency">
-      <mat-option value="EUR">EUR</mat-option>
-      <mat-option value="USD">USD</mat-option>
-      <mat-option value="GBP">GBP</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <mat-input-container class="form-group full-width">
+    <input matInput formControlName="cashCurrency" placeholder="Currency" class="form-control">
+  </mat-input-container>
 
   <mat-card-actions>
     <button mat-raised-button color="primary" type="submit" (click)="addBank(myForm);">Add</button>
