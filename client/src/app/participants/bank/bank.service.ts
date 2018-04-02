@@ -7,7 +7,6 @@ import { Bank, Cash, Coins } from '@network';
 export class BankService {
   private _bank = 'Bank';
   private _coins = 'Coins';
-  private _service = 'Service';
   private _cash = 'Cash';
 
   constructor(

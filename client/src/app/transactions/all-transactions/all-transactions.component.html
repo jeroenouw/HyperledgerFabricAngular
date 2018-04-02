@@ -2,7 +2,7 @@
 
 <hr>
 
-<div *ngIf="_performedTransactions.length == 0 && _systemTransactions.length == 0">
+<div *ngIf="performedTransactions.length == 0 && systemTransactions.length == 0">
   <h4>No transactions are made yet</h4>
 </div>
 
@@ -42,4 +42,8 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+
+  <mat-paginator #paginator
+  [pageSize]="15">
+  </mat-paginator>
 </div>
