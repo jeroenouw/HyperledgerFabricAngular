@@ -30,9 +30,9 @@ docker rm $(docker ps -aq)
 docker rmi $(docker images dev-* -q)
 ```
 
-Set Hyperledger Fabric version to v1.0:
+Set Hyperledger Fabric version to v1.1:
 
-`export FABRIC_VERSION=hlfv1`
+`export FABRIC_VERSION=hlfv11`
 
 All the scripts will be in the directory `/fabric-tools`.  Start fabric and create peer admin card:
 
@@ -55,7 +55,6 @@ npm install
 
 The `composer archive create` command in `package.json` has created a file called `decentralized-finance-network.bna` in the `dist` folder. 
 
-
 ## 4. Deploy to Fabric
 
 Now, we are ready to deploy the business network to Hyperledger Fabric. This requires the Hyperledger Composer chaincode to be installed on the peer,then the business network archive (.bna) must be sent to the peer, and a new participant, identity, and associated card must be created to be the network administrator. Finally, the network administrator business network card must be imported for use, and the network can then be pinged to check it is responding.
@@ -64,13 +63,13 @@ First, install the composer runtime:
 
 ```cmd
 cd dist/
-composer network install -c PeerAdmin@hlfv1 --businessNetworkName decentralized-finance-network
+composer network install -c PeerAdmin@hlfv1  -a decentralized-finance-network.bna
 ```
 
 Deploy the business network:
 
 ```cmd
-composer network start -c PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile decentralized-finance-network.bna -f networkadmin.card
+composer network start -c PeerAdmin@hlfv1 -n decentralized-finance-network -V 0.0.1 -A admin -S adminpw -f networkadmin.card
 ```
 
 Import the network administrator identity as a usable business network card:

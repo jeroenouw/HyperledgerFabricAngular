@@ -1,3 +1,7 @@
+[![npmversion](https://img.shields.io/npm/v/decentralized-finance-network.svg)]()
+[![npmlicense](https://img.shields.io/npm/l/decentralized-finance-network.svg)](https://github.com/jeroenouw/HyperledgerFabricAngular/blob/master/LICENSE/)
+[![downloads](https://img.shields.io/npm/dy/decentralized-finance-network.svg)]()
+
 # Hyperledger Fabric with Angular
 
 ## Work in progess
