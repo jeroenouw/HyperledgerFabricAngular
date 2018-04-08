@@ -1,9 +1,11 @@
 # Get started
 
 ## Prerequisite
+
 [Install these first before getting started](https://github.com/jeroenouw/HyperledgerFabricAngular/blob/master/docs/PREREQUISITE.md)
 
 ## Steps
+
 1. [Clone the repo](#1-clone-the-repo)
 2. [Setup Fabric](#2-setup-fabric)
 3. [Generate the Business Network Archive](#3-generate-the-business-network-archive)
@@ -22,7 +24,7 @@ Clone the `code` locally. In a terminal, run:
 
 These commands will kill and remove all running containers, and should remove all previously created Hyperledger Fabric chaincode images:
 
-```none
+```cmd
 docker kill $(docker ps -q)
 docker rm $(docker ps -aq)
 docker rmi $(docker images dev-* -q)
@@ -34,7 +36,7 @@ Set Hyperledger Fabric version to v1.0:
 
 All the scripts will be in the directory `/fabric-tools`.  Start fabric and create peer admin card:
 
-```
+```cmd
 cd fabric-tools/
 ./downloadFabric.sh
 ./startFabric.sh
@@ -46,7 +48,7 @@ cd fabric-tools/
 Use Composer to create a Business Network Definition and export it as an archive (.bna). This is a comprised of Model(.cto), Script(.js), Access Control(.acl) and Query(.qry) files.  
 Next generate the .bna file from the root directory:
 
-```
+```cmd
 cd ../
 npm install
 ```
@@ -60,46 +62,53 @@ Now, we are ready to deploy the business network to Hyperledger Fabric. This req
 
 First, install the composer runtime:
 
-```
+```cmd
 cd dist/
-composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName decentralized-finance-network
+composer network install -c PeerAdmin@hlfv1 --businessNetworkName decentralized-finance-network
 ```
 
 Deploy the business network:
 
-```
-composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile decentralized-finance-network.bna --file networkadmin.card
+```cmd
+composer network start -c PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile decentralized-finance-network.bna -f networkadmin.card
 ```
 
 Import the network administrator identity as a usable business network card:
-```
-composer card import --file networkadmin.card
+
+```cmd
+composer card import -f networkadmin.card
 ```
 
 Check that the business network has been deployed successfully, run the following command to ping the network:
-```
-composer network ping --card admin@decentralized-finance-network
+
+```cmd
+composer network ping -c admin@decentralized-finance-network
 ```
 
 ## 5. Run Application
 
 First, go into the `client` folder and install the dependency:
 
-```
+```cmd
 cd ../client/
 npm install
 ```
 
 To start the application:
-```
+
+```cmd
 npm start
-```  
-This command will run: 
-```  
-concurrently \"ng serve --host 0.0.0.0\" \"npm run app\"
-``` 
-followed by:
 ```
+
+This command will run:
+
+```cmd
+concurrently \"ng serve --host 0.0.0.0\" \"npm run app\"
+```
+
+Followed by:
+
+```cmd
 composer-rest-server -c admin@decentralized-finance-network -n never -w true
 ```
 
@@ -119,7 +128,7 @@ Execute transactions manually between Freelancers, Freelancer and Bank, and Free
 
 At the end of your session, stop fabric:
 
-```
+```cmd
 cd ~/fabric-tools
 ./stopFabric.sh
 ./teardownFabric.sh

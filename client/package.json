@@ -11,7 +11,10 @@
     "build": "ng build --prod",
     "test": "ng test --watch false",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "compodoc:c": "compodoc -p src/tsconfig.app.json",
+    "compodoc:s": "compodoc -p src/tsconfig.app.json --serve",
+    "compodoc:w": "compodoc -p src/tsconfig.app.json --serve --watch"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +45,7 @@
     "@angular/cli": "1.6.7",
     "@angular/compiler-cli": "^5.2.3",
     "@angular/language-service": "^5.2.3",
+    "@compodoc/compodoc": "^1.1.1",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~9.4.0",
